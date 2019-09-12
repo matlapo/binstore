@@ -53,8 +53,7 @@ pub struct SparseIndex {
     index: Vec<IndexEntry>,
 }
 
-/// An entry in the full index; the key is the blake2b hash of the
-/// content id (plus other values); the offset points into the data
+/// An entry in the full index; the offset points into the data
 /// section where the set of Values is stored.
 #[derive(Debug, Deserialize, Serialize, Clone, Copy)]
 pub struct IndexEntry {
