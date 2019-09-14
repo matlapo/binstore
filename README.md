@@ -70,7 +70,7 @@ A binstore file is split in four sections:
 
 ## Query
 
-```
+```rust
 use std::iter::FromIterator;
 use std::collections::{BTreeMap, BTreeSet};
 use tempfile::NamedTempFile;
@@ -102,7 +102,8 @@ fn main() {
 ```
 
 ## Merge
-```
+
+```rust
 use std::iter::FromIterator;
 use std::collections::{BTreeMap, BTreeSet};
 use tempfile::NamedTempFile;
