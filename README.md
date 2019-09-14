@@ -1,3 +1,7 @@
+# Binstore
+
+Binstore is a simple key-value store written in Rust. This means that serialization/deserialization is not handled by binstore. All it does is storing key-values element in a cache-friendly and compact file format. For now, this project is mostly for fun, but could hopefully evolve into something useable in the future.
+
 # File format
 ## Headers
 
@@ -61,3 +65,68 @@ A binstore file is split in four sections:
    binary searching.
 4. The data.  This is where the actual `Value`s are stored.  To save
    space, we use the LZ4 compression algorithm.
+   
+# Examples
+
+## Query
+
+```
+use std::iter::FromIterator;
+use std::collections::{BTreeMap, BTreeSet};
+use tempfile::NamedTempFile;
+use binstore::bucket::*;
+
+fn main() {
+    let mut bmap = BTreeMap::new();
+    for key in 0 .. 100 {
+        bmap.insert(key as u64, BTreeSet::from_iter(0 .. (key as u128)));
+    }
+
+    let tmp = NamedTempFile::new().unwrap();
+    create(tmp.path(), &bmap).expect("create");
+
+    {
+        let bucket = Bucket::open(tmp.path()).expect("open");
+        let mut bucket = bucket.check_headers().expect("check_headers");
+        let si = bucket.read_sparse_index().expect("sparse index");
+
+        for (key, actual_values) in &bmap {
+            let (offset_1, offset_2) = si.try_get(*key).expect("try_get");
+            let values = bucket.try_get(*key, offset_1, offset_2)
+                .expect("try_get (1)")
+                .expect("try_get (2)");
+            assert_eq!(actual_values, &values);
+        }
+    }
+}
+```
+
+## Merge
+```
+use std::iter::FromIterator;
+use std::collections::{BTreeMap, BTreeSet};
+use tempfile::NamedTempFile;
+use binstore::bucket::*;
+
+fn main() {
+    let mut bmap1 = BTreeMap::new();
+    for key in 0 .. 100 {
+        bmap1.insert(key as u64, BTreeSet::from_iter(0 .. (key as u128)));
+    }
+
+    let mut bmap2 = BTreeMap::new();
+    for key in 0 .. 200 {
+        bmap2.insert(key as u64, BTreeSet::from_iter(0 .. (key as u128)));
+    }
+
+    let tmp1 = NamedTempFile::new().unwrap();
+    let tmp2 = NamedTempFile::new().unwrap();
+    let merged_file = NamedTempFile::new().unwrap();
+
+    create(tmp1.path(), &bmap1).unwrap();
+    create(tmp2.path(), &bmap2).unwrap();
+    merge(tmp1.path(), tmp2.path(), merged_file.path()).unwrap();
+}
+```
+
+More examples will be added to `examples/` in the future.
