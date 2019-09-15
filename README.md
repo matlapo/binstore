@@ -2,6 +2,10 @@
 
 Binstore is a simple key-value store written in Rust. This means that serialization/deserialization is not handled by binstore. All it does is storing key-value elements in a cache-friendly and compact file format. For now, this project is mostly for fun, but could hopefully evolve into something useable in the future.
 
+# Documentation
+
+https://docs.rs/binstore/
+
 # File format
 ## Headers
 
