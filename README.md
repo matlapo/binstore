@@ -4,7 +4,7 @@ Binstore is a simple key-value store written in Rust. This means that serializat
 
 # Documentation
 
-https://docs.rs/binstore/
+https://docs.rs/binstore
 
 # File format
 ## Headers
