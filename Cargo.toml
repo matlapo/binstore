@@ -8,6 +8,9 @@ edition = "2018"
 readme = "README.md"
 repository = "https://github.com/matlapo/binstore"
 categories = ["database-implementations"]
+exclude = [
+    "examples/*",
+]
 
 [dependencies]
 bincode = "~1.1"
