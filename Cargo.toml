@@ -1,8 +1,13 @@
 [package]
 name = "binstore"
-version = "0.1.0"
-authors = ["Vincent Foley <vfoley@gmail.com>", "Mathieu Lapointe <mathieu.lapointe6@gmail.com>"]
+version = "0.2.0"
+license = "MIT"
+description = "A simple key-value store written in Rust. Uses its own compact file format."
+authors = ["Mathieu Lapointe <mathieu.lapointe6@gmail.com>", "Vincent Foley <vfoley@gmail.com>"]
 edition = "2018"
+readme = "README.md"
+repository = "https://github.com/matlapo/binstore"
+categories = ["database-implementations"]
 
 [dependencies]
 bincode = "~1.1"
