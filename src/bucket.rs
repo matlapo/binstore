@@ -339,8 +339,7 @@ pub fn create<P: AsRef<Path>>(filename: P, entries: &BTreeMap<u64, BTreeSet<Valu
     Ok(())
 }
 
-/// Merges two binstore files, and returns a BTreeMap that can be fed to
-/// Bucket::create (or an error).
+/// Merges two binstore files, and write the result directly on disk.
 pub fn merge<P: AsRef<Path>>(filename1: P, filename2: P, output_file: P) -> Result<()> {
     enum Origin {
         Bucket1 { offset: u64 },
