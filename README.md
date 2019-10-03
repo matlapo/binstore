@@ -1,12 +1,20 @@
 # Binstore [![crates.io](https://img.shields.io/crates/v/binstore)](https://crates.io/crates/binstore)
 
-Binstore is a simple key-value store written in Rust. This means that serialization/deserialization is not handled by binstore. All it does is storing key-value elements in a cache-friendly and compact file format. For now, this project is mostly for fun, but could hopefully evolve into something useable in the future.
+Binstore is a simple key-value store written in Rust. This means that serialization/deserialization is not handled by binstore. All it does is storing key-value elements in a cache-friendly and compact file format. For now, this project is mostly for fun, but could hopefully evolve into something more useable in the future.
+
+# Gettting Started
+
+## Last Stable Release
+`cargo install binstore`
+
+## Latest Development Changes
+`git clone https://github.com/matlapo/binstore`
 
 # Documentation
 
 https://docs.rs/binstore
 
-# File format
+# File Format
 ## Headers
 
 | Field name       | Description                      | Type |
