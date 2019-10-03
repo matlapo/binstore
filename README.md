@@ -84,9 +84,9 @@ As a rough idea of the time it takes to perform these operations, here's the tim
 
 1. Opening the file: 35 µs
 2. Checking the headers: 5 µs
-3. Loading the Sparse Index: 1.9 µs
-4. Doing a lookup in the Sparse Index: 0.11 µs
-5. Doing a lookup in the Dense Index: 72 µs
+3. Loading the sparse index: 1.9 µs
+4. Doing a lookup in the sparse index: 0.11 µs
+5. Doing a lookup in the dense index: 72 µs
 6. Decoding the values: 39 µs
    
 # Examples
