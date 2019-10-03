@@ -147,3 +147,6 @@ fn main() {
 ```
 
 More examples will be added to `examples/` in the future.
+
+# License
+This project is licensed under the MIT License - see the LICENSE file for details.
