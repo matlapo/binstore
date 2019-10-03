@@ -5,7 +5,11 @@ Binstore is a simple key-value store written in Rust. This means that serializat
 # Getting Started
 
 ## Last Stable Release
-`cargo install binstore`
+In `Cargo.toml` of your project:
+```toml
+[dependencies]
+bincode = "~0.2"
+```
 
 ## Latest Development Changes
 `git clone https://github.com/matlapo/binstore`
