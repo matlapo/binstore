@@ -4,15 +4,11 @@ Binstore is a simple key-value store written in Rust. This means that serializat
 
 # Getting Started
 
-## Last Stable Release
-In `Cargo.toml` of your project:
+In `Cargo.toml` of your project, add `binstore` as a dependency.
 ```toml
 [dependencies]
 bincode = "~0.2"
 ```
-
-## Latest Development Changes
-`git clone https://github.com/matlapo/binstore`
 
 # Documentation
 
@@ -147,6 +143,10 @@ fn main() {
 ```
 
 More examples will be added to `examples/` in the future.
+
+# Contribute
+
+`git clone https://github.com/matlapo/binstore`
 
 # License
 This project is licensed under the MIT License - see the LICENSE file for details.
