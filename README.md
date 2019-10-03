@@ -78,6 +78,17 @@ A binstore file is split in four sections:
 4. The data.  This is where the actual `Value`s are stored.  To save
    space, we use the LZ4 compression algorithm.
    
+# Performance
+
+As a rough idea of the time it takes to perform these operations, here's the time it takes on my machine to search for a key in a 1 Gb file with 128-bit values:
+
+1. Opening the file: 35 µs
+2. Checking the headers: 5 µs
+3. Loading the Sparse Index: 1.9 µs
+4. Doing a lookup in the Sparse Index: 0.11 µs
+5. Doing a lookup in the Dense Index: 72 µs
+6. Decoding the values: 39 µs
+   
 # Examples
 
 ## Query
